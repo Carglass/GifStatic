@@ -31,9 +31,8 @@ $(document).ready(function(){
 
     displayButtons();
 
-    $('.button').click(function(event){
+    $(document).on('click','.button',function(event){
         query = event.target.innerHTML;
-        console.log('i run')
         var xhr = $.getJSON("http://api.giphy.com/v1/gifs/search?q=" + query + "&api_key=LE368ulPYMOd9WAAKgEfNA7SZJHnsYaO&limit=10");
         xhr.done(displayGifs);
     });
@@ -54,7 +53,6 @@ $(document).ready(function(){
 
     $('#xtraTopicSubmit').click(function(){
         let topic = $('#xtraTopic').val();
-        console.log(topic);
         topics.push(topic);
         displayButtons();
     })
