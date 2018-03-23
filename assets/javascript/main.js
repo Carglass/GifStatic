@@ -51,10 +51,22 @@ $(document).ready(function(){
         this.classList.add('stillGif');
     });
 
-    $('#xtraTopicSubmit').click(function(){
+    $('#xtraTopicSubmit').click(function(event){
+        event.preventDefault();
         let topic = $('#xtraTopic').val();
         topics.push(topic);
+        $('#xtraTopic').val('');
         displayButtons();
-    })
+    });
+
+    $('#xtraTopic').keypress(function(e) {
+        if(e.which == 13) {
+            e.preventDefault();
+            let topic = $('#xtraTopic').val();
+            topics.push(topic);
+            $('#xtraTopic').val('');
+            displayButtons();
+        }
+    });
     
 });
