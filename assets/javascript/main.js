@@ -5,7 +5,7 @@ let dataStorage = '';
 function displayButtons(){
     $('#buttons').empty();
     for (let i = 0; i < topics.length; i++){
-        let button = $('<button class="button"></button');
+        let button = $('<button class="button btn btn-secondary col-2"></button');
         button.text(topics[i]);
         $('#buttons').append(button);
     }
@@ -16,9 +16,9 @@ function displayGifs(data){
     $('#gifs').empty();
     for (let i = 0; i < data.data.length; i++){
         console.log(data);
-        let imgDiv = $('<div></div>');
+        let imgDiv = $('<div class="col-6"></div>');
         let imgBlock = $('<img src="' + data.data[i].images.downsized_still.url + '"/>');
-        let imgRating = $('<p>' + data.data[i].rating + '</p>');
+        let imgRating = $('<p>Rating: ' + data.data[i].rating + '</p>');
         imgBlock.addClass('stillGif');
         imgBlock.attr('id','img-'+i);
         imgDiv.append(imgBlock).append(imgRating);
@@ -54,9 +54,11 @@ $(document).ready(function(){
     $('#xtraTopicSubmit').click(function(event){
         event.preventDefault();
         let topic = $('#xtraTopic').val();
-        topics.push(topic);
-        $('#xtraTopic').val('');
-        displayButtons();
+        if (topic !== ''){
+            topics.push(topic);
+            $('#xtraTopic').val('');
+            displayButtons();
+        }
     });
 
     $('#xtraTopic').keypress(function(e) {
