@@ -33,7 +33,7 @@ $(document).ready(function(){
 
     $(document).on('click','.button',function(event){
         query = event.target.innerHTML;
-        var xhr = $.getJSON("http://api.giphy.com/v1/gifs/search?q=" + query + "&api_key=LE368ulPYMOd9WAAKgEfNA7SZJHnsYaO&limit=10");
+        var xhr = $.getJSON("https://api.giphy.com/v1/gifs/search?q=" + query + "&api_key=LE368ulPYMOd9WAAKgEfNA7SZJHnsYaO&limit=10");
         xhr.done(displayGifs);
     });
 
